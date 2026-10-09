@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>No estás en el lugar correcto… | FemProbiotics.com</title>
+<meta name="description" content="Aviso independiente: femprobiotics.com no es la tienda oficial de Fem Probiotics. Aquí te acompañamos al sitio correcto: femprobiotics.co">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="No estás en el lugar correcto… pero no estás sola.">
+<meta property="og:description" content="Página independiente de femprobiotics.com. Sin ventas, sin registros: solo el camino al sitio oficial, femprobiotics.co">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CO">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23F5849B'/%3E%3Cpath d='M16 23c-4.2-3.1-7-5.7-7-8.6 0-2 1.6-3.6 3.5-3.6 1.4 0 2.7.8 3.5 2 .8-1.2 2.1-2 3.5-2 1.9 0 3.5 1.6 3.5 3.6 0 2.9-2.8 5.5-7 8.6z' fill='%23221019'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- ══ GA4: descomenta y pon tu ID (alimenta el contador y las "recuperadas") ══
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+-->
+
+<style>
+:root{
+  --bg:#170E17;
+  --ink:#F7EDF2;
+  --muted:#B49CAC;
+  --pink:#F5849B;
+  --pink-hot:#E4577E;
+  --pink-soft:#F8B8C6;
+  --blush:#F0989C;          /* rosa oficial de femprobiotics.co */
+  --line:rgba(255,255,255,.10);
+  --glass:rgba(255,255,255,.045);
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --ease:cubic-bezier(.7,0,.2,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--body);line-height:1.6;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--pink);color:#22101A}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{width:min(1180px,calc(100% - 44px));margin:0 auto;position:relative;z-index:2}
+
+/* ════════════════════════════════════════════════════════════
+   CURSOR PERSONALIZADO — solo punteros finos (escritorio)
+   ════════════════════════════════════════════════════════════ */
+@media (pointer:fine){
+  html,body,a,button,[role="button"]{cursor:none !important}
+  .cur-dot,.cur-ring{position:fixed;left:0;top:0;z-index:120;pointer-events:none;border-radius:50%}
+  .cur-dot{
+    width:15px;height:15px;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21C5.4 16.2 2 12.6 2 8.9 2 6 4.2 3.8 6.9 3.8c2 0 3.9 1.2 5.1 3 1.2-1.8 3.1-3 5.1-3C19.8 3.8 22 6 22 8.9c0 3.7-3.4 7.3-10 12.1z' fill='%23F5849B'/%3E%3C/svg%3E") center/contain no-repeat;
+    filter:drop-shadow(0 2px 6px rgba(245,132,155,.55));
+  }
+  .cur-ring{
+    width:40px;height:40px;border:1.4px solid rgba(245,132,155,.7);
+    display:grid;place-items:center;
+    transition:width .35s var(--ease),height .35s var(--ease),background-color .3s,border-color .3s,opacity .3s;
+  }
+  .cur-ring b{
+    font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+    color:#2A0F1C;opacity:0;transition:opacity .2s;font-family:var(--body);
+  }
+  body.cur-link .cur-ring{width:62px;height:62px;background:rgba(245,132,155,.14)}
+  body.cur-label .cur-ring{width:92px;height:92px;background:var(--pink);border-color:var(--pink)}
+  body.cur-label .cur-ring b{opacity:1}
+  body.cur-label .cur-dot{opacity:0}
+}
+@media (pointer:coarse){.cur-dot,.cur-ring{display:none}}
+
+/* ════════════════════════════════════════════════════════════
+   FONDO VIVO: pétalos + orbes + grano
+   ════════════════════════════════════════════════════════════ */
+#petals{position:fixed;inset:0;z-index:0;pointer-events:none}
+.orb{position:fixed;border-radius:50%;filter:blur(110px);pointer-events:none;z-index:0;will-change:transform}
+.orb-1{width:54vw;height:54vw;max-width:660px;max-height:660px;background:rgba(228,87,126,.20);top:-18vw;right:-14vw;animation:drift 17s ease-in-out infinite alternate}
+.orb-2{width:46vw;height:46vw;max-width:580px;max-height:580px;background:rgba(122,46,110,.30);bottom:-16vw;left:-16vw;animation:drift 21s ease-in-out infinite alternate-reverse}
+@keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(4vw,5vh,0) scale(1.14)}}
+.grain{
+  position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.05;mix-blend-mode:soft-light;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── barra superior ─────────────────────────────────────────── */
+.top{position:sticky;top:0;z-index:70;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(23,14,23,.72);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:12px;padding:13px 0;font-size:13px;color:var(--muted)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--pink);box-shadow:0 0 0 4px rgba(245,132,155,.16);flex:none;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(245,132,155,.16)}50%{box-shadow:0 0 0 9px rgba(245,132,155,.05)}}
+.top strong{color:var(--ink);font-weight:700}
+.top .right{margin-left:auto;font-family:var(--display);font-style:italic;color:var(--pink-soft);font-size:14px}
+@media(max-width:680px){.top .right{display:none}}
+
+/* ── hero ───────────────────────────────────────────────────── */
+.hero{padding:clamp(60px,11vh,128px) 0 clamp(30px,5vh,54px);text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11.5px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--pink-soft);border:1px solid rgba(245,132,155,.32);padding:8px 16px;border-radius:999px;background:rgba(245,132,155,.07)}
+h1{font-family:var(--display);font-weight:560;font-size:clamp(42px,8.6vw,112px);line-height:.98;letter-spacing:-.03em;margin:clamp(20px,4vh,38px) auto 0;max-width:14ch}
+h1 .grad{display:block;font-style:italic;font-weight:420;background:linear-gradient(94deg,var(--pink-soft) 0%,var(--pink) 42%,#FFC9A9 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
+.hero .sub{max-width:560px;margin:clamp(16px,3vh,26px) auto 0;color:var(--muted);font-size:clamp(15.5px,2.2vw,18.5px)}
+.hero .sub b{color:var(--ink)}
+
+/* ── cifras en vivo ─────────────────────────────────────────── */
+.stats{
+  margin:clamp(30px,5vh,54px) auto 0;border:1px solid var(--line);border-radius:26px;
+  background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  padding:clamp(24px,4vw,40px) clamp(20px,4vw,48px);
+  display:grid;grid-template-columns:1fr 1px 1fr;gap:clamp(16px,3vw,38px);
+  align-items:center;text-align:center;position:relative;overflow:hidden;
+}
+.stats::before{content:"EN VIVO";position:absolute;top:15px;right:18px;font-size:10px;font-weight:800;letter-spacing:.24em;color:var(--pink)}
+.stats::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--pink);position:absolute;top:19px;right:76px;animation:pulse 2s infinite}
+.stats .divider{width:1px;height:100%;min-height:70px;background:linear-gradient(180deg,transparent,var(--line),transparent)}
+.num{font-family:var(--display);font-weight:600;font-size:clamp(46px,9vw,96px);line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.num.recovered{background:linear-gradient(100deg,var(--pink-soft),var(--pink-hot));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat-label{color:var(--muted);font-size:clamp(13px,1.8vw,15px);margin-top:9px;max-width:26ch;margin-inline:auto}
+.stat-label b{color:var(--ink)}
+.stats .fine{grid-column:1/-1;font-size:12px;color:var(--muted);opacity:.85;margin:0;border-top:1px solid var(--line);padding-top:14px}
+.copy-stats{
+  grid-column:1/-1;justify-self:center;margin-top:12px;
+  display:inline-flex;align-items:center;gap:8px;
+  background:transparent;border:1px solid rgba(245,132,155,.35);color:var(--pink-soft);
+  font-family:var(--body);font-size:12.5px;font-weight:700;letter-spacing:.04em;
+  padding:9px 18px;border-radius:999px;transition:background .25s,color .25s,border-color .25s;
+}
+.copy-stats:hover{background:var(--pink);color:#2A0F1C;border-color:var(--pink)}
+@media(max-width:700px){
+  .stats{grid-template-columns:1fr}
+  .stats .divider{width:60%;height:1px;min-height:1px;margin:0 auto;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+}
+
+/* ── marquesina ─────────────────────────────────────────────── */
+.marquee{margin:clamp(44px,8vh,88px) 0 0;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;transform:rotate(-1.4deg) scale(1.02);background:rgba(245,132,155,.045)}
+.marquee .track{display:flex;width:max-content;animation:slide 30s linear infinite}
+.marquee span{font-family:var(--display);font-style:italic;font-size:clamp(17px,2.6vw,26px);color:transparent;-webkit-text-stroke:1px rgba(248,184,198,.5);white-space:nowrap;padding-right:2.2em}
+.marquee span i{font-style:normal;-webkit-text-stroke:0;color:var(--pink)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ════════════════════════════════════════════════════════════
+   LAS TRES PUERTAS — paneles cinematográficos que se expanden
+   ════════════════════════════════════════════════════════════ */
+.doors{padding:clamp(52px,9vh,104px) 0 0}
+.doors-head{text-align:center;margin-bottom:clamp(26px,4.5vh,46px)}
+h2{font-family:var(--display);font-weight:560;letter-spacing:-.025em;font-size:clamp(30px,5vw,56px);line-height:1.05;margin:14px 0 0}
+h2 em{font-style:italic;color:var(--pink-soft)}
+
+.panels{display:flex;gap:16px;height:clamp(430px,58vh,520px)}
+.panel{
+  position:relative;flex:1;overflow:hidden;border-radius:30px;
+  border:1px solid var(--line);background:var(--glass);
+  transition:flex 1s var(--ease),border-color .5s,transform .5s;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:26px;isolation:isolate;
+}
+.panel::before{ /* agua de color propia de cada puerta */
+  content:"";position:absolute;inset:0;z-index:-2;transition:transform 1.2s var(--ease),opacity .6s;
+}
+.p-official::before{background:linear-gradient(165deg,#3A1B33 0%,#7A2E46 55%,var(--blush) 130%)}
+.p-ig::before{background:linear-gradient(165deg,#241224 0%,#4A1E3F 60%,#8E3769 130%)}
+.p-sale::before{background:linear-gradient(165deg,#1B1018 0%,#33182B 60%,#6B2A4A 130%)}
+.panel::after{ /* marca de agua tipográfica */
+  content:attr(data-mark);position:absolute;top:-4%;right:-2%;z-index:-1;
+  font-family:var(--display);font-style:italic;font-weight:700;
+  font-size:clamp(90px,12vw,170px);line-height:1;color:transparent;
+  -webkit-text-stroke:1px rgba(248,184,198,.16);
+  transition:transform 1s var(--ease),-webkit-text-stroke-color .6s;
+}
+.panel:hover,.panel:focus-within{flex:2.7;border-color:rgba(245,132,155,.42)}
+.panel:hover::before,.panel:focus-within::before{transform:scale(1.08)}
+.panel:hover::after,.panel:focus-within::after{transform:translateY(10px) rotate(-3deg);-webkit-text-stroke-color:rgba(248,184,198,.34)}
+.panels:has(.panel:hover) .panel:not(:hover):not(:focus-within){transform:scale(.985);filter:saturate(.7)}
+
+.pnum{font-family:var(--display);font-style:italic;font-size:15px;color:var(--pink);letter-spacing:.06em}
+.panel h3{font-family:var(--display);font-weight:560;font-size:clamp(23px,2.4vw,32px);letter-spacing:-.02em;margin:6px 0 0;line-height:1.08}
+.panel-body{
+  display:grid;gap:14px;grid-template-rows:auto;
+  opacity:0;transform:translateY(26px);
+  transition:opacity .55s ease .12s,transform .7s var(--ease) .12s;
+  margin-top:0;max-height:0;overflow:hidden;
+}
+.panel:hover .panel-body,.panel:focus-within .panel-body{opacity:1;transform:none;max-height:340px;margin-top:14px}
+.panel-body p{margin:0;color:var(--muted);font-size:14.5px}
+.panel-body p b{color:var(--ink)}
+.hint{font-size:12px !important;font-style:italic;color:var(--pink-soft) !important;opacity:.9}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  border-radius:999px;padding:15px 24px;font-weight:800;font-size:15px;
+  text-decoration:none;border:1px solid transparent;font-family:var(--body);
+  position:relative;overflow:hidden;transition:transform .2s ease,box-shadow .25s ease,background .25s,border-color .25s;
+  justify-self:start;
+}
+.btn svg{transition:transform .2s ease;flex:none}
+.btn:hover svg{transform:translateX(4px)}
+.btn-pink{background:linear-gradient(120deg,var(--pink) 0%,var(--pink-hot) 100%);color:#2A0F1C;box-shadow:0 12px 34px rgba(228,87,126,.32)}
+.btn-pink::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.5) 50%,transparent 70%);transform:translateX(-120%);transition:transform .8s ease}
+.btn-pink:hover::after{transform:translateX(120%)}
+.btn-pink:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(228,87,126,.46)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:rgba(255,255,255,.22)}
+.btn-ghost:hover{background:rgba(255,255,255,.08);border-color:rgba(245,132,155,.55);transform:translateY(-2px)}
+.btn:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
+
+@media(max-width:920px){
+  .panels{flex-direction:column;height:auto}
+  .panel{flex:none !important;min-height:0;transform:none !important;filter:none !important}
+  .panel-body{opacity:1;transform:none;max-height:none;margin-top:14px;overflow:visible}
+  .panel::after{font-size:110px}
+}
+
+/* ════════════════════════════════════════════════════════════
+   TAKEOVER — todo el sitio se convierte en femprobiotics.co
+   ════════════════════════════════════════════════════════════ */
+.takeover{
+  position:fixed;inset:0;z-index:100;pointer-events:none;
+  clip-path:circle(0px at var(--ox,50%) var(--oy,60%));
+  transition:clip-path 1s cubic-bezier(.65,0,.25,1);
+}
+.takeover.on{clip-path:circle(150% at var(--ox,50%) var(--oy,60%))}
+.takeover.on .tk-btn,.takeover.on .tk-exit{pointer-events:auto}
+.takeover img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;
+  transform:scale(1.14);transition:transform 2.2s cubic-bezier(.2,.7,.2,1);
+}
+.takeover.on img{transform:scale(1)}
+.tk-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(240,152,156,.10) 0%,rgba(240,152,156,.05) 45%,rgba(23,14,23,.66) 100%)}
+.tk-content{
+  position:absolute;left:50%;bottom:clamp(34px,8vh,84px);transform:translate(-50%,26px);
+  text-align:center;width:min(680px,calc(100% - 40px));
+  opacity:0;transition:opacity .5s ease .35s,transform .8s var(--ease) .35s;
+}
+.takeover.on .tk-content{opacity:1;transform:translate(-50%,0)}
+.tk-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(23,14,23,.55);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:8px 16px;border-radius:999px}
+.tk-content h2{color:#fff;font-size:clamp(28px,4.6vw,52px);margin:16px 0 8px;text-shadow:0 4px 30px rgba(0,0,0,.35)}
+.tk-content h2 em{color:#FFE3EA}
+.tk-content p{color:rgba(255,255,255,.88);margin:0 auto 20px;font-size:15px;max-width:46ch}
+.tk-btn{background:#fff;color:#B3355F;box-shadow:0 16px 44px rgba(0,0,0,.35)}
+.tk-btn:hover{transform:translateY(-2px);box-shadow:0 22px 54px rgba(0,0,0,.45)}
+.tk-exit{position:absolute;top:20px;right:22px;color:rgba(255,255,255,.85);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(23,14,23,.4);backdrop-filter:blur(8px);padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.28);font-family:var(--body);transition:background .2s,color .2s}
+.tk-exit:hover{background:rgba(255,255,255,.9);color:#B3355F}
+
+/* ── footer ────────────────────────────────────────────────── */
+footer{margin-top:clamp(64px,11vh,120px);border-top:1px solid var(--line);background:linear-gradient(180deg,transparent,rgba(245,132,155,.05))}
+.foot{padding:clamp(46px,8vh,84px) 0 40px;text-align:center}
+.foot .lead{color:var(--muted);font-size:clamp(15px,2.2vw,18px);max-width:46ch;margin:0 auto}
+.mega-mail{display:inline-block;margin:20px auto 6px;text-decoration:none;font-family:var(--display);font-style:italic;font-weight:520;font-size:clamp(23px,6.2vw,66px);letter-spacing:-.02em;line-height:1.15;color:var(--ink);position:relative;word-break:break-all}
+.mega-mail::after{content:"";position:absolute;left:0;right:0;bottom:-.08em;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--pink-soft),var(--pink-hot));transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.mega-mail:hover{color:var(--pink-soft)}
+.mega-mail:hover::after{transform:scaleX(1)}
+.foot .who{color:var(--muted);font-size:13.5px;margin:6px 0 0}
+.foot-links{display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:center;margin:28px 0 0;font-size:13.5px;font-weight:700}
+.foot-links a{text-decoration:none;color:var(--pink-soft);border-bottom:1px solid rgba(248,184,198,.35);padding-bottom:2px;transition:color .2s,border-color .2s}
+.foot-links a:hover{color:var(--ink);border-color:var(--ink)}
+.legal{max-width:760px;margin:36px auto 0;color:var(--muted);font-size:12.3px;text-align:left;line-height:1.7}
+.legal details{margin-top:10px}
+.legal summary{cursor:pointer;font-weight:700;color:var(--pink-soft);font-size:12.3px}
+.legal p{margin:8px 0}
+.copy{margin-top:24px;font-size:12px;color:var(--muted);opacity:.8}
+
+/* ── reveal ─────────────────────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important;transition-duration:.01s !important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+  #petals{display:none}
+}
+</style>
+</head>
+<body>
+
+<canvas id="petals" aria-hidden="true"></canvas>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="cur-ring" aria-hidden="true"><b></b></div>
+<div class="cur-dot" aria-hidden="true"></div>
+
+<div class="top">
+  <div class="wrap">
+    <span class="dot" aria-hidden="true"></span>
+    <span><strong>Sitio no oficial.</strong> femprobiotics.com no pertenece a Fem Probiotics — la tienda real vive en <strong>.co</strong></span>
+    <span class="right">un aviso, no una tienda</span>
+  </div>
+</div>
+
+<main>
+  <section class="hero wrap">
+    <span class="eyebrow reveal">Aviso independiente · FemProbiotics.com</span>
+    <h1 class="reveal d1">No estás en el lugar correcto…<span class="grad">pero no estás sola.</span></h1>
+    <p class="sub reveal d2">Respira: no rompiste nada. Aquí <b>no se vende nada</b> y no estás perdida — estás acompañada. Esta página existe para una sola cosa: llevarte a la puerta correcta.</p>
+
+    <div class="stats reveal d3" aria-live="polite">
+      <div>
+        <div class="num" id="stat-visits">—</div>
+        <div class="stat-label"><b>visitas</b> cayeron en este dominio este mes buscando a Fem</div>
+      </div>
+      <div class="divider" aria-hidden="true"></div>
+      <div>
+        <div class="num recovered" id="stat-recovered">—</div>
+        <div class="stat-label"><b>clientas recuperadas</b> para el sitio oficial desde esta página</div>
+      </div>
+      <p class="fine" id="stats-fine">Cifras reales agregadas de Google Analytics 4 · <code>stats.json</code> se refresca solo cada hora (GitHub Actions) o en vivo vía Worker · sin cookies publicitarias y sin identificarte.</p>
+      <button class="copy-stats" id="btn-copy-stats" type="button" data-cursor="copiar">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar estas cifras como informe
+      </button>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      <span>femprobiotics.com no es la tienda <i>✳</i> el sitio correcto es femprobiotics.co <i>✳</i> nadie vende nada aquí <i>✳</i> </span>
+      <span>femprobiotics.com no es la tienda <i>✳</i> el sitio correcto es femprobiotics.co <i>✳</i> nadie vende nada aquí <i>✳</i> </span>
+    </div>
+  </div>
+
+  <section class="doors wrap">
+    <div class="doors-head reveal">
+      <span class="eyebrow">Elige tu salida</span>
+      <h2>Tres puertas. <em>Un clic cada una.</em></h2>
+    </div>
+
+    <div class="panels reveal d1">
+      <!-- 01 -->
+      <article class="panel p-official" data-mark=".com">
+        <span class="pnum">01 · la puerta correcta</span>
+        <h3>Ir al sitio oficial</h3>
+        <div class="panel-body">
+          <p>Compras, productos y atención de Fem Probiotics en su casa verdadera: <b>femprobiotics.co</b>.</p>
+          <p class="hint">Mantén el cursor sobre el botón… y mira cómo se abre la puerta de verdad.</p>
+          <a class="btn btn-pink" id="btn-official" href="https://femprobiotics.co/" rel="noopener noreferrer" data-cursor="ir">
+            Ir a FemProbiotics.co
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- 02 -->
+      <article class="panel p-ig" data-mark="@">
+        <span class="pnum">02 · la puerta amable</span>
+        <h3>Pídeselo con cariño</h3>
+        <div class="panel-body">
+          <p>Escríbeles a <b>@femprobiotics</b>: cuéntales que caíste en <b>.com</b> y pídeles, con amor, el <b>redirect</b> al <b>.co</b>. Un mensajito tuyo hoy evita que mil mujeres se pierdan mañana.</p>
+          <a class="btn btn-ghost" id="btn-ig" href="https://www.instagram.com/femprobiotics/" target="_blank" rel="noopener noreferrer" data-cursor="hola">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"/></svg>
+            Abrir su Instagram
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- 03 -->
+      <article class="panel p-sale" data-mark="€">
+        <span class="pnum">03 · la puerta del dueño</span>
+        <h3>Este dominio se vende</h3>
+        <div class="panel-body">
+          <p>Soy <b>Houssem</b>, titular de femprobiotics.com. No compito con la marca: la protejo mientras nadie la reclame. Transferencia segura vía GoDaddy Escrow.</p>
+          <a class="btn btn-ghost" id="btn-sale" href="https://forsale.godaddy.com/forsale/femprobiotics.com" target="_blank" rel="noopener noreferrer" data-cursor="oferta">
+            Ver precio y comprarlo
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <p class="lead reveal">¿Eres la marca, una clienta perdida o alguien con una oferta seria? El dueño de este dominio responde personalmente:</p>
+    <a class="mega-mail reveal d1" href="mailto:houssemkamas96@gmail.com?subject=femprobiotics.com" data-cursor="hola">houssemkamas96@gmail.com</a>
+    <p class="who reveal d1">Sin intermediarios, sin formularios, sin bots. Un correo, una persona.</p>
+    <div class="foot-links reveal d2">
+      <a href="https://femprobiotics.co/" rel="noopener noreferrer">Sitio oficial</a>
+      <a href="https://www.instagram.com/femprobiotics/" target="_blank" rel="noopener noreferrer">Instagram de Fem</a>
+      <a href="https://forsale.godaddy.com/forsale/femprobiotics.com" target="_blank" rel="noopener noreferrer">Comprar el dominio</a>
+    </div>
+    <div class="legal reveal d2">
+      <p><strong>femprobiotics.com</strong> es un dominio de propiedad independiente. <strong>No está afiliado, autorizado, patrocinado ni vinculado</strong> con FEM PROBIOTICS S.A.S. ni con la marca «Fem» o sus productos. Esta página no vende productos, no recoge datos personales, no instala cookies publicitarias y no recibe comisiones por redirigir: el único enlace comercial apunta al sitio oficial de la marca o a la página de venta del dominio. Las marcas citadas pertenecen a sus titulares y se mencionan de forma meramente nominativa, para orientar a quien escribió la extensión equivocada. Nada de lo aquí publicado constituye consejo médico.</p>
+      <details><summary>English — non-affiliation notice</summary><p>femprobiotics.com is an independently owned domain, not affiliated with, endorsed by, or connected to FEM PROBIOTICS S.A.S. or the “Fem” brand. This page sells nothing, collects no personal data and earns no commission; its only commercial links point to the brand’s official site or to the domain’s sale listing. Trademarks belong to their owners and are referenced nominatively to help visitors who typed the wrong extension. Nothing here is medical advice.</p></details>
+      <details><summary>العربية — إخلاء مسؤولية</summary><p dir="rtl">النطاق femprobiotics.com مملوك لطرف مستقل، وليس تابعاً أو مرخّصاً أو مرتبطاً بشركة FEM PROBIOTICS S.A.S أو بعلامة «Fem». هذه الصفحة لا تبيع منتجات، ولا تجمع بيانات شخصية، ولا تحصل على عمولات؛ روابطها التجارية الوحيدة تؤدي إلى الموقع الرسمي للعلامة أو إلى صفحة بيع النطاق. العلامات التجارية ملك أصحابها وتُذكر لغرض التعريف فقط. لا شيء هنا يُعد استشارة طبية.</p></details>
+      <p class="copy">© <span id="year">2026</span> Houssem Kamas · titular de femprobiotics.com · página estática, sin servidor propio.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ TAKEOVER: al mantener el cursor en "Ir a FemProbiotics.co",
+        toda la interfaz se transforma en el sitio oficial ══ -->
+<div class="takeover" id="takeover" aria-hidden="true">
+  <img src="assets/official.jpg" alt="">
+  <div class="tk-veil"></div>
+  <button class="tk-exit" id="tk-exit" type="button" tabindex="-1">mueve el cursor para volver ↩</button>
+  <div class="tk-content">
+    <span class="tk-chip">femprobiotics.co · así se ve la puerta correcta</span>
+    <h2>Este es su mundo. <em>Te llevo ahora.</em></h2>
+    <p>Lo que ves detrás es el sitio oficial de Fem Probiotics, tal cual. Un clic y estás dentro.</p>
+    <a class="btn tk-btn" id="btn-tk" href="https://femprobiotics.co/" rel="noopener noreferrer" tabindex="-1">
+      Entrar a femprobiotics.co
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</div>
+
+<script>
+/* ═════════════ CONFIG ═════════════ */
+const CONFIG = {
+  officialUrl : "https://femprobiotics.co/",
+  instagramUrl: "https://www.instagram.com/femprobiotics/",
+  saleUrl     : "https://forsale.godaddy.com/forsale/femprobiotics.com",
+
+  /* fuente del contador:
+     • "stats.json"                        → modo GitHub (gratis): un Actions
+       horario escribe el archivo y la página lo lee de su propio dominio.
+     • "https://fp-counter.TU-SUB.workers.dev/api/visits"
+                                           → modo Worker en vivo (también gratis). */
+  statsApi    : "stats.json"
+};
+/* ══════════════════════════════════ */
+
+const $ = s => document.querySelector(s);
+const finePointer = matchMedia("(pointer:fine)").matches;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+$("#btn-official").href = CONFIG.officialUrl;
+$("#btn-ig").href       = CONFIG.instagramUrl;
+$("#btn-sale").href     = CONFIG.saleUrl;
+$("#btn-tk").href       = CONFIG.officialUrl;
+$("#year").textContent  = new Date().getFullYear();
+
+/* ── reveal on scroll ── */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
+}), { threshold:.12 });
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+/* ════════════════════════════════════════════════════════════
+   1) CURSOR: corazón + anillo que respira
+   ════════════════════════════════════════════════════════════ */
+if (finePointer && !reduce){
+  const dot = $(".cur-dot"), ring = $(".cur-ring"), label = ring.querySelector("b");
+  let mx = innerWidth/2, my = innerHeight/2, rx = mx, ry = my;
+
+  addEventListener("pointermove", e => { mx = e.clientX; my = e.clientY;
+    dot.style.transform = `translate3d(${mx}px,${my}px,0) translate(-50%,-50%)`;
+  }, { passive:true });
+
+  (function loop(){
+    rx += (mx - rx) * .16; ry += (my - ry) * .16;
+    ring.style.transform = `translate3d(${rx}px,${ry}px,0) translate(-50%,-50%)`;
+    requestAnimationFrame(loop);
+  })();
+
+  document.addEventListener("mouseover", e => {
+    const lab = e.target.closest("[data-cursor]");
+    const lnk = e.target.closest("a,button,summary");
+    if (lab){ document.body.classList.add("cur-label"); label.textContent = lab.dataset.cursor; }
+    else if (lnk){ document.body.classList.add("cur-link"); document.body.classList.remove("cur-label"); }
+  });
+  document.addEventListener("mouseout", e => {
+    if (e.target.closest("[data-cursor]")) document.body.classList.remove("cur-label");
+    if (e.target.closest("a,button,summary")) document.body.classList.remove("cur-link");
+  });
+}
+
+/* ════════════════════════════════════════════════════════════
+   2) FONDO: pétalos que caen suave (canvas, ~0 dependencia)
+   ════════════════════════════════════════════════════════════ */
+(function petals(){
+  if (reduce) return;
+  const cv = $("#petals"), cx = cv.getContext && cv.getContext("2d");
+  if (!cx) return;
+  let W, H, P = [];
+  const N = () => Math.min(26, Math.round(innerWidth / 70));
+
+  function size(){
+    W = cv.width  = innerWidth  * devicePixelRatio;
+    H = cv.height = innerHeight * devicePixelRatio;
+    cv.style.width = innerWidth + "px"; cv.style.height = innerHeight + "px";
+  }
+  function make(seed){
+    return {
+      x: Math.random()*W, y: seed ? Math.random()*H : -40*devicePixelRatio,
+      r: (5 + Math.random()*9) * devicePixelRatio,
+      vy:(.18 + Math.random()*.35) * devicePixelRatio,
+      sw: Math.random()*Math.PI*2, sp: .004 + Math.random()*.008,
+      rot: Math.random()*Math.PI, vr:(Math.random()-.5)*.01,
+      a: .05 + Math.random()*.10
+    };
+  }
+  function init(){ size(); P = Array.from({length:N()}, () => make(true)); }
+  addEventListener("resize", init); init();
+
+  (function tick(){
+    if (!document.hidden){
+      cx.clearRect(0,0,W,H);
+      for (const p of P){
+        p.y += p.vy; p.sw += p.sp; p.rot += p.vr;
+        p.x += Math.sin(p.sw) * .4 * devicePixelRatio;
+        if (p.y > H + 60) Object.assign(p, make(false));
+        cx.save(); cx.translate(p.x,p.y); cx.rotate(p.rot);
+        cx.fillStyle = `rgba(245,132,155,${p.a})`;
+        cx.beginPath();
+        cx.ellipse(0,0,p.r,p.r*.62,0,0,Math.PI*2);   /* pétalo */
+        cx.fill(); cx.restore();
+      }
+    }
+    requestAnimationFrame(tick);
+  })();
+})();
+
+/* ════════════════════════════════════════════════════════════
+   3) TAKEOVER cinematográfico
+   ════════════════════════════════════════════════════════════ */
+(function takeover(){
+  if (!matchMedia("(hover:hover)").matches) return;   /* solo escritorio */
+  const tk = $("#takeover"), btn = $("#btn-official"),
+        tkBtn = $("#btn-tk"), exit = $("#tk-exit");
+  let on = false, timer;
+
+  function open(){
+    clearTimeout(timer);
+    if (on) return;
+    on = true;
+    const r = btn.getBoundingClientRect();
+    tk.style.setProperty("--ox", (r.left + r.width/2) + "px");
+    tk.style.setProperty("--oy", (r.top  + r.height/2) + "px");
+    tk.classList.add("on");
+  }
+  /* gracia de 800 ms: da tiempo de viajar del botón al CTA del takeover
+     sin que la capa parpadee en el camino */
+  function close(grace){
+    clearTimeout(timer);
+    timer = setTimeout(() => { on = false; tk.classList.remove("on"); },
+                       grace === 0 ? 0 : 800);
+  }
+
+  btn.addEventListener("mouseenter", open);
+  btn.addEventListener("mouseleave", () => close());
+  btn.addEventListener("focus", open);
+  btn.addEventListener("blur", () => close());
+  tkBtn.addEventListener("mouseenter", open);
+  tkBtn.addEventListener("mouseleave", () => close());
+  exit.addEventListener("click", () => close(0));
+  addEventListener("keydown", e => { if (e.key === "Escape") close(0); });
+  tkBtn.addEventListener("click", () => {
+    try{ if (window.gtag) gtag("event","click_official",{ event_category:"rescue" }); }catch(e){}
+  });
+})();
+
+/* ── copiar cifras reales como informe de negociación ── */
+$("#btn-copy-stats").addEventListener("click", async function(){
+  const v = $("#stat-visits").textContent, r = $("#stat-recovered").textContent;
+  const txt =
+`Informe de tráfico — femprobiotics.com
+Período: ${new Date().toLocaleDateString("es-CO",{month:"long",year:"numeric"})}
+Visitas que buscaron a Fem y cayeron aquí: ${v}
+Clientas acompañadas al sitio oficial: ${r}
+Fuente: Google Analytics 4 (/api/visits), datos agregados y anónimos.
+Este dominio redirige al sitio oficial sin coste y sin afiliación.
+Contacto del titular: houssemkamas96@gmail.com`;
+  const btn = this, old = btn.innerHTML;
+  const done = () => { btn.textContent = "Informe copiado ✓"; setTimeout(() => btn.innerHTML = old, 2000); };
+  try{
+    await navigator.clipboard.writeText(txt); done();
+  }catch(e){
+    const ta = document.createElement("textarea");
+    ta.value = txt; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    let ok = false;
+    try{ ok = document.execCommand("copy"); }catch(_){}
+    document.body.removeChild(ta);
+    if (ok) done(); else window.prompt("Copia el informe manualmente:", txt);
+  }
+});
+
+/* ── tracking del clic de rescate ── */
+$("#btn-official").addEventListener("click", () => {
+  try{ if (window.gtag) gtag("event","click_official",{ event_category:"rescue" }); }catch(e){}
+});
+
+/* ════════════════════════════════════════════════════════════
+   4) CONTADOR REAL (GA4 vía worker /api/visits)
+   ════════════════════════════════════════════════════════════ */
+const fmt = n => new Intl.NumberFormat("es-CO").format(n);
+function countUp(el, to){
+  if (reduce || to <= 0){ el.textContent = fmt(to); return; }
+  const t0 = performance.now(), dur = 1500;
+  (function step(t){
+    const p = Math.min((t - t0)/dur, 1), e = 1 - Math.pow(1 - p, 4);
+    el.textContent = fmt(Math.round(to * e));
+    if (p < 1) requestAnimationFrame(step);
+  })(t0);
+}
+(async function loadStats(){
+  const v = $("#stat-visits"), r = $("#stat-recovered");
+  try{
+    const sep = CONFIG.statsApi.includes("?") ? "&" : "?";
+    const res = await fetch(CONFIG.statsApi + sep + "t=" + Date.now(),
+                            { cache:"no-store", headers:{ Accept:"application/json" } });
+    if (!res.ok) throw new Error("api " + res.status);
+    const d = await res.json();
+    if (Number.isFinite(d.visits))    countUp(v, d.visits);
+    if (Number.isFinite(d.recovered)) countUp(r, d.recovered);
+    if (d.generatedAt){
+      const when = new Date(d.generatedAt);
+      $("#stats-fine").innerHTML =
+        `Cifras reales agregadas de Google Analytics 4 · último refresco: ` +
+        `<b>${when.toLocaleDateString("es-CO",{day:"numeric",month:"short"})} ` +
+        `${when.toLocaleTimeString("es-CO",{hour:"2-digit",minute:"2-digit"})}</b> · ` +
+        `sin cookies publicitarias y sin identificarte.`;
+    }
+  }catch(err){
+    v.textContent = r.textContent = "—";
+    $("#stats-fine").textContent =
+      "El contador lee stats.json (generado cada hora por GitHub Actions desde GA4) " +
+      "o /api/visits si activas el Worker. Hasta que conectes tu GA4, aquí verás " +
+      "guiones o ceros: nunca cifras inventadas.";
+  }
+})();
+</script>
+</body>
+</html>

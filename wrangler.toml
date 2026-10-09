@@ -1,0 +1,28 @@
+# ════════════════════════════════════════════════════════════════
+#  fp-counter — Cloudflare Worker (الخطة المجانية: 100k طلب/يوم، بلا بطاقة)
+#  نشر بأمر واحد:   npx wrangler deploy
+#  ثم الأسرار مرة واحدة:
+#    npx wrangler secret put GA4_PROPERTY_ID
+#    npx wrangler secret put GA_CLIENT_EMAIL
+#    npx wrangler secret put GA_PRIVATE_KEY
+#
+#  رابطك يصبح:  https://fp-counter.<subdomain>.workers.dev/api/visits
+#  ⇒ ضعه في index.html داخل CONFIG.statsApi
+#    (أو اترك "stats.json" إذا اعتمدت مسار GitHub Actions المجاني وحده)
+# ════════════════════════════════════════════════════════════════
+
+name    = "fp-counter"
+main    = "worker.js"
+compatibility_date = "2025-09-01"
+
+# لا متغيرات عادية هنا: الأسرار تُحقن عبر `wrangler secret put` فقط،
+# حتى لا يقترب المفتاح الخاص من الـ git أبداً.
+
+# ══ اختيارى: ربط بنطاقك بدل workers.dev ══
+# ألغِ التعليق بعد إضافة femprobiotics.com إلى حساب Cloudflare:
+# routes = [
+#   { pattern = "femprobiotics.com/api/visits", zone_name = "femprobiotics.com" }
+# ]
+
+[observability]
+enabled = false

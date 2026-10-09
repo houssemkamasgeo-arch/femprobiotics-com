@@ -1,0 +1,49 @@
+# ════════════════════════════════════════════════════════════════
+#  العدّاد بدون خادم: كل ساعة، GitHub Actions (مجاني للمستودعات العامة)
+#  يسأل GA4 عن رقمين ويكتب stats.json داخل المستودع → GitHub Pages
+#  يخدمه من نفس النطاق (لا CORS، لا Worker، لا بطاقة بنكية).
+#
+#  الأسرار المطلوبة في:  Settings → Secrets and variables → Actions
+#    GA4_PROPERTY_ID , GA_CLIENT_EMAIL , GA_PRIVATE_KEY
+#  (نفس أسرار الـ Worker تماماً — تُجهَّز مرة واحدة)
+#
+#  تشغيل يدوي أول مرة: تبويب Actions → "stats" → Run workflow
+# ════════════════════════════════════════════════════════════════
+name: stats
+
+on:
+  schedule:
+    - cron: "7 * * * *"      # الدقيقة 7 من كل ساعة
+  workflow_dispatch: {}       # زر تشغيل يدوي
+
+permissions:
+  contents: write             # ليسمح للـ bot بعمل commit لـ stats.json
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build stats.json from GA4
+        env:
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+          GA_CLIENT_EMAIL: ${{ secrets.GA_CLIENT_EMAIL }}
+          GA_PRIVATE_KEY:  ${{ secrets.GA_PRIVATE_KEY }}
+        run: node scripts/build-stats.mjs
+
+      - name: Commit stats.json if it changed
+        run: |
+          git config user.name  "stats-bot"
+          git config user.email "stats-bot@users.noreply.github.com"
+          git add stats.json
+          if git diff --cached --quiet; then
+            echo "stats.json sin cambios"
+          else
+            git commit -m "chore(stats): refresh counter [skip ci]"
+            git push
+          fi
