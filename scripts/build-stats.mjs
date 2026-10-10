@@ -28,10 +28,11 @@ const b64url = (input) => {
 
 const pemToBuffer = (pem) => {
   const b64 = pem
-    .replace(/\\n/g, "")
-    .replace(/-----BEGIN PRIVATE KEY-----/g, "")
-    .replace(/-----END PRIVATE KEY-----/g, "")
-    .replace(/\s+/g, "");
+    .replace(/-----BEGIN[^-]+-----/g, "")
+    .replace(/-----END[^-]+-----/g, "")
+    .replace(/\\[nrt]/g, "")
+    .replace(/\s+/g, "")
+    .replace(/[^A-Za-z0-9+/=]/g, "");
   const bin = atob(b64);
   const out = new Uint8Array(bin.length);
   for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
@@ -140,5 +141,5 @@ try {
   console.log(`✅ stats.json → visits=${out.visits} recovered=${out.recovered}`);
 } catch (err) {
   keepOrInit(`Error inesperado: ${err?.message ?? err}`);
-  process.exit(0);   // el workflow queda verde; el contador conserva su último dato real
+  process.exit(0);
 }
