@@ -28,6 +28,7 @@ const b64url = (input) => {
 
 const pemToBuffer = (pem) => {
   const b64 = pem
+    .replace(/\\n/g, "")
     .replace(/-----BEGIN PRIVATE KEY-----/g, "")
     .replace(/-----END PRIVATE KEY-----/g, "")
     .replace(/\s+/g, "");
