@@ -1,8 +1,7 @@
 {
-  "visits": 0,
-  "recovered": 0,
+  "visits": 50,
+  "recovered": 13,
   "month": "2026-10",
-  "generatedAt": null,
-  "source": "pending",
-  "note": "Faltan secrets de GA4 en el repositorio"
+  "generatedAt": "2026-10-10T21:57:32.311Z",
+  "source": "ga4"
 }
